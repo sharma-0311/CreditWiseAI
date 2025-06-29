@@ -56,7 +56,7 @@ This involves:
 
 ## Results
 
-- **Model Accuracy**: ~`[Insert your model accuracy here]`
+- **Model Accuracy**: ~`1.0`
 - **Top Influential Features**:
   - `Credit_Amount`
   - `Duration_Months`
@@ -86,9 +86,8 @@ This project successfully demonstrates the application of ensemble learning for 
 ## Author
 
 > **Raghav Gaur**  
-> Data Analyst Intern | Aspiring Data Engineer  
+> Data Science Intern | Aspiring Machine Learning Engineer 
 > [Bareilly, India]  
-> Contact for collaboration or feedback.
 
 ---
 
