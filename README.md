@@ -1,4 +1,5 @@
-**CreditWiseAI** an **ml-credit-evaluator**
+# **CreditWiseAI** an **ml-credit-evaluator**
+---
 
 # Creditworthiness Prediction using Random Forest
 
