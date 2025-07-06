@@ -1,3 +1,5 @@
+**CreditWiseAI** an **ml-credit-evaluator**
+
 # Creditworthiness Prediction using Random Forest
 
 This project is a machine learning solution that predicts the **creditworthiness of individuals** based on financial and personal attributes. The goal is to classify whether a person is likely to be a **good or bad credit risk**, using a Random Forest ensemble method.
