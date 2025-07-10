@@ -68,8 +68,10 @@ The dataset consists of several financial features such as:
 - **Accuracy**: *0.7350*
 - **ROC-AUC Score**: *0.7882*
 - **Confusion Matrix**:
-  [[ 29  31]
-  [ 22 118]]
+  
+  | 29 | 31 |
+  | 22 |118 |
+  
 - **Top Features**: Duration_Months , Credit_Amount
 
 ---
