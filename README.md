@@ -107,7 +107,7 @@ The dataset consists of several financial features such as:
 
 I'm **Raghav Gaur**, an aspiring **Data Analyst/Machine Learning Engineer** with a passion for real-world machine learning applications.
 
-📫 Connect with me:  
+-- Connect with me:  
 [LinkedIn](https://linkedin.com/in/raghav--gaur)  
 
 ---
