@@ -1,4 +1,4 @@
-# Credit Analyzing System using Random Forest
+# **CreditWiseAI** : Credit Analyzing System
 
 ##  Project Overview
 
