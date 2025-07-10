@@ -70,11 +70,11 @@ The dataset consists of several financial features such as:
 - **Confusion Matrix**:
   
                  Predicted
-               |  0   |  1
-         -------------------
-         0     | 29   | 31
-Actual   -------------------
-         1     | 22   | 118
+               |  1   |  0
+             -------------------
+               | 31   | 29  |   0
+             -------------------    Actual
+               | 118  | 22  |   1
 
 - **Top Features**: Duration_Months , Credit_Amount
 
