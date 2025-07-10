@@ -1,96 +1,119 @@
-# **CreditWiseAI** an **ml-credit-evaluator**
----
+# Credit Analyzing System using Random Forest
 
-# Creditworthiness Prediction using Random Forest
+##  Project Overview
 
-This project is a machine learning solution that predicts the **creditworthiness of individuals** based on financial and personal attributes. The goal is to classify whether a person is likely to be a **good or bad credit risk**, using a Random Forest ensemble method.
+The **Credit Analyzing System** is a machine learning project designed to predict the **creditworthiness of individuals** using financial and demographic data. It utilizes a **Random Forest Classifier**, **XGBoost** and **LogisticRegression** for accurate and reliable predictions — making it suitable for real-world applications in banking and finance.
 
----
-
-## Objective
-
-To fulfill the internship assignment of:
-> **"Using a Random Forest ensemble method to predict creditworthiness of individuals based on various financial attributes."**
-
-This involves:
-- Preprocessing raw financial data
-- Training a predictive model
-- Evaluating model performance
-- Interpreting predictions using explainable AI (SHAP)
+> Built as part of an internship task to demonstrate end-to-end machine learning pipeline and model explainability.
 
 ---
 
-## Dataset
+##  Key Features
 
-**Source**: [UCI German Credit Dataset](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data))  
-**Attributes**: 20 input features + 1 binary target (`good` or `bad` credit)
-
----
-
-## Project Workflow
-
-1. **Data Acquisition**  
-   - Retrieved using the `ucimlrepo` Python library directly from UCI.
-
-2. **Data Preprocessing**  
-   - Renamed ambiguous attribute names for clarity  
-   - Categorical encoding via `LabelEncoder`  
-   - Target variable converted from text to binary labels
-
-3. **Exploratory Data Analysis**  
-   - Distribution plots for target variable  
-   - Correlation heatmap for feature relationships  
-   - KDE plots and pairplots to understand data distributions
-
-4. **Modeling**  
-   - Used `RandomForestClassifier` from `sklearn`  
-   - 80/20 stratified train-test split  
-   - Evaluated using:
-     - Accuracy Score
-     - Confusion Matrix
-     - Classification Report
-
-5. **Model Explainability**  
-   - Integrated `SHAP` (SHapley Additive Explanations)  
-   - Force plots for instance-level interpretation  
-   - Identified key contributing features
+-  **Random Forest Classification** and **XGBoost** for improved prediction performance
+-  **Data Preprocessing** and feature engineering
+-  **Visualizations** to understand feature impact and distributions
+-  **Model Evaluation** using classification metrics & ROC AUC
+-  **SHAP Explainability** to understand model decisions
 
 ---
 
-## Results
+##  Problem Statement
 
-- **Model Accuracy**: ~`1.0`
-- **Top Influential Features**:
-  - `Credit_Amount`
-  - `Duration_Months`
-  - `Age`
-  - `Checking_Account_Status`
-  - `Savings_Account`
+> **Goal**: Predict whether a customer is **creditworthy** based on their financial and behavioral attributes using a machine learning classification approach.
 
 ---
 
-## Conclusion
+##  Dataset Overview
 
-This project successfully demonstrates the application of ensemble learning for credit scoring. By combining **Random Forest classification** with **SHAP explainability**, we not only achieved high predictive performance but also gained **insight into feature contributions**, making the model more transparent and trustworthy — an essential aspect in the financial domain.
+The dataset consists of several financial features such as:
 
----
+- `Age`, `Income`, `Employment Type`
+- `Number of Open Credit Lines`
+- `Credit History Length`, `Loan Purpose`
+- `Overdue Count`, `Loan Amount`, etc.
 
-## Tech Stack
-
-- Python 3.12
-- Pandas, NumPy
-- Seaborn, Matplotlib
-- Scikit-learn
-- SHAP
-- ucimlrepo
+> *(Dataset used is cleaned and anonymized/synthetic for academic use.)*
 
 ---
 
-## Author
+##  Tech Stack
 
-> **Raghav Gaur**  
-> Data Science Intern | Aspiring Machine Learning Engineer 
-> [Bareilly, India]  
+| Tool/Library     | Purpose                            |
+|------------------|------------------------------------|
+| **Python**       | Programming language               |
+| **Pandas, NumPy**| Data cleaning & transformation     |
+| **Matplotlib, Seaborn** | Visualization libraries      |
+| **Imbalance**    | Balanced Dataset                   |
+| **Scikit-learn** | ML algorithms and evaluation       |
+| **SHAP**         | Model interpretability             |
+
 
 ---
 
+##  Project Pipeline
+
+1.  Data Loading & Cleaning  
+2.  Feature Engineering & Preprocessing  (OneHoe Encoder, LabelEncoder, Column Transformer)
+3.  Train-Test Splitting  
+4.  Model Training (Random Forest)  
+5.  Performance Evaluation (Accuracy, ROC-AUC, Confusion Matrix)
+6.  Hyperparameter Tuning (GridSearchCV)
+7.  Interpret Results using SHAP plots  
+
+---
+
+##  Model Performance
+
+- **Accuracy**: *0.7350*
+- **ROC-AUC Score**: *0.7882*
+- **Confusion Matrix**:
+  [[ 29  31]
+  [ 22 118]]
+- **Top Features**: Duration_Months , Credit_Amount
+
+---
+
+##  How to Run This Project
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/CreditWiseAI.git
+    cd CreditWiseAI
+    ```
+2. Open the notebook:
+    ```bash
+    jupyter notebook CreditWiseAI.ipynb
+    ```
+
+---
+
+##  Future Improvements
+
+-  Deploy using **Streamlit** or **Flask**
+-  Containizer with **Docker**
+-  Implement Model Monitoring
+-  Add unit tests and ML pipeline CI/CD
+
+---
+
+##  About Me
+
+I'm **Raghav Gaur**, an aspiring **Data Analyst/Machine Learning Engineer** with a passion for real-world machine learning applications.
+
+📫 Connect with me:  
+[LinkedIn](https://linkedin.com/in/raghav--gaur)  
+
+---
+
+##  Show Your Support
+
+If you found this project helpful or interesting, don’t forget to:
+
+- ⭐ Star this repo  
+- 🔄 Fork it  
+- 🐛 Open issues or suggestions
+
+---
+
+> *This project was built as part of a data science internship assignment focused on ensemble methods for credit prediction.*
