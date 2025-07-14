@@ -1,8 +1,9 @@
-# **CreditWiseAI** : Credit Analyzing System
+# CreditWiseAI - Intelligent Creditworthiness Prediction App
 
 ##  Project Overview
 
-The **Credit Analyzing System** is a machine learning project designed to predict the **creditworthiness of individuals** using financial and demographic data. It utilizes a **Random Forest Classifier**, **XGBoost** and **LogisticRegression** for accurate and reliable predictions — making it suitable for real-world applications in banking and finance.
+**CreditWiseAI** is a robust, ML-powered Streamlit web application Project that predicts the **creditworthiness** of individuals using advanced ensemble modeling techniques and real-world financial data. This solution integrates preprocessing, model tuning, cost-sensitive evaluation, and SHAP interpretability into an intuitive user interface for quick and reliable assessments.
+
 
 > Built as part of an internship task to demonstrate end-to-end machine learning pipeline and model explainability.
 
@@ -15,6 +16,7 @@ The **Credit Analyzing System** is a machine learning project designed to predic
 -  **Visualizations** to understand feature impact and distributions
 -  **Model Evaluation** using classification metrics & ROC AUC
 -  **SHAP Explainability** to understand model decisions
+-  **Streamlit**-based web interface for real-time predictions
 
 ---
 
@@ -91,14 +93,17 @@ The dataset consists of several financial features such as:
     ```bash
     jupyter notebook CreditWiseAI.ipynb
     ```
+3. Run Streamlit App:
+   ```bash
+    streamlit run CreditWiseAI_app.py
+    ```
 
 ---
 
 ##  Future Improvements
 
--  Deploy using **Streamlit** or **Flask**
 -  Containizer with **Docker**
--  Implement Model Monitoring
+-  Implement Model Tracking and Monitoring 
 -  Add unit tests and ML pipeline CI/CD
 
 ---
