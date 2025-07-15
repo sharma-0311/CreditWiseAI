@@ -2,15 +2,14 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.metrics import confusion_matrix, make_scorer
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from xgboost import XGBClassifier
 from imblearn.over_sampling import SMOTE
-from collections import Counter
 import warnings
+import io
+
 
 # Suppress warnings for a cleaner UI
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -262,19 +261,19 @@ PURPOSE_MAP = {
 }
 
 SAVINGS_ACCOUNT_BONDS_MAP = {
-    '< 100 DM': '< 100 DM',
-    '100 <= ... < 500 DM': '100 <= ... < 500 DM',
-    '500 <= ... < 1000 DM': '500 <= ... < 1000 DM',
-    '>= 1000 DM': '>= 1000 DM',
+    '< 1000 Rs.': '< 100 DM',
+    '1000 - 5000 Rs.': '100 <= ... < 500 DM',
+    '5000 - 10000 Rs.': '500 <= ... < 1000 DM',
+    '> 1000 Rs.': '>= 1000 DM',
     'no savings account': 'unknown/no savings account'
 }
 
 EMPLOYMENT_DURATION_MAP = {
     'unemployed': 'unemployed',
     '< 1 year': '< 1 year',
-    '1 <= ... < 4 years': '1 <= ... < 4 years',
-    '4 <= ... < 7 years': '4 <= ... < 7 years',
-    '>= 7 years': '>= 7 years'
+    '1 - 4 years': '1 <= ... < 4 years',
+    '4 - 7 years': '4 <= ... < 7 years',
+    '> 7 years': '>= 7 years'
 }
 
 PERSONAL_STATUS_GENDER_MAP = {
@@ -301,13 +300,13 @@ PROPERTY_MAP = {
 OTHER_INSTALLMENT_PLANS_MAP = {
     'bank': 'bank',
     'stores': 'stores',
+    'other': 'other',
     'none': 'none'
 }
 
 HOUSING_MAP = {
     'rent': 'rent',
     'own': 'own',
-    'for free': 'for free'
 }
 
 JOB_MAP = {
@@ -330,21 +329,21 @@ FOREIGN_WORKER_MAP = {
 with st.sidebar.form("input_form"):
     st.subheader("Financial Information")
     input_data['Checking_Account_Status'] = st.selectbox("Checking Account Status", list(CHECKING_ACCOUNT_STATUS_MAP.values()), format_func=lambda x: list(CHECKING_ACCOUNT_STATUS_MAP.keys())[list(CHECKING_ACCOUNT_STATUS_MAP.values()).index(x)])
-    input_data['Duration_Months'] = st.number_input("Duration of Credit (Months)", min_value=4, max_value=72, value=24, step=1)
+    input_data['Duration_Months'] = st.number_input("Duration of Credit (Months)", min_value=4, max_value=72, value=12, step=1)
     input_data['Credit_History'] = st.selectbox("Credit History", list(CREDIT_HISTORY_MAP.values()), format_func=lambda x: list(CREDIT_HISTORY_MAP.keys())[list(CREDIT_HISTORY_MAP.values()).index(x)])
     input_data['Purpose'] = st.selectbox("Purpose of Credit", list(PURPOSE_MAP.values()), format_func=lambda x: list(PURPOSE_MAP.keys())[list(PURPOSE_MAP.values()).index(x)])
-    input_data['Credit_Amount'] = st.number_input("Credit Amount (DM)", min_value=250, max_value=20000, value=2000, step=100)
+    input_data['Credit_Amount'] = st.number_input("Credit Amount (Rs.)", min_value=1000, max_value=100000, value=10000, step=100)
     input_data['Savings_Account_Bonds'] = st.selectbox("Savings Account/Bonds", list(SAVINGS_ACCOUNT_BONDS_MAP.values()), format_func=lambda x: list(SAVINGS_ACCOUNT_BONDS_MAP.keys())[list(SAVINGS_ACCOUNT_BONDS_MAP.values()).index(x)])
-    input_data['Installment_Rate_Income'] = st.slider("Installment Rate in % of Disposable Income", min_value=1, max_value=4, value=3)
+    input_data['Installment_Rate_Income'] = st.slider("Installment Rate in % of Disposable Income", min_value=0, max_value=15, value=5)
     input_data['Other_Installment_Plans'] = st.selectbox("Other Installment Plans", list(OTHER_INSTALLMENT_PLANS_MAP.values()), format_func=lambda x: list(OTHER_INSTALLMENT_PLANS_MAP.keys())[list(OTHER_INSTALLMENT_PLANS_MAP.values()).index(x)])
-    input_data['Number_Existing_Credits'] = st.slider("Number of Existing Credits at this Bank", min_value=1, max_value=4, value=1)
+    input_data['Number_Existing_Credits'] = st.slider("Number of Existing Credits at this Bank", min_value=0, max_value=5, value=1)
 
     st.subheader("Personal & Demographic Information")
     input_data['Personal_Status_Gender'] = st.selectbox("Personal Status & Gender", list(PERSONAL_STATUS_GENDER_MAP.values()), format_func=lambda x: list(PERSONAL_STATUS_GENDER_MAP.keys())[list(PERSONAL_STATUS_GENDER_MAP.values()).index(x)])
     input_data['Employment_Duration'] = st.selectbox("Employment Duration", list(EMPLOYMENT_DURATION_MAP.values()), format_func=lambda x: list(EMPLOYMENT_DURATION_MAP.keys())[list(EMPLOYMENT_DURATION_MAP.values()).index(x)])
     input_data['Residence_Duration'] = st.slider("Residence Duration (Years at current address)", min_value=1, max_value=4, value=2)
     input_data['Property'] = st.selectbox("Property Type", list(PROPERTY_MAP.values()), format_func=lambda x: list(PROPERTY_MAP.keys())[list(PROPERTY_MAP.values()).index(x)])
-    input_data['Age'] = st.number_input("Age (Years)", min_value=18, max_value=75, value=30, step=1)
+    input_data['Age'] = st.number_input("Age (Years)", min_value=18, max_value=75, value=21, step=1)
     input_data['Housing'] = st.selectbox("Housing Type", list(HOUSING_MAP.values()), format_func=lambda x: list(HOUSING_MAP.keys())[list(HOUSING_MAP.values()).index(x)])
     input_data['Job'] = st.selectbox("Job Type", list(JOB_MAP.values()), format_func=lambda x: list(JOB_MAP.keys())[list(JOB_MAP.values()).index(x)])
     input_data['Number_People_Maintenance'] = st.radio("Number of people being liable to provide maintenance for", [1, 2], index=0)
@@ -424,3 +423,13 @@ if submitted:
 
     st.markdown("---")
     st.info("Disclaimer: This is a predictive model. All credit decisions should be made by qualified professionals.")
+
+    st.download_button(
+        label="Download Report",
+        data=input_df.to_csv(index=False),
+        file_name='credit_report.csv',
+        mime='text/csv'
+    )
+
+    if st.sidebar.button("Reset All Fields"):
+        st.experimental_rerun()
