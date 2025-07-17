@@ -328,29 +328,28 @@ FOREIGN_WORKER_MAP = {
 
 with st.sidebar.form("input_form"):
     st.subheader("Financial Information")
-    input_data['Checking_Account_Status'] = st.selectbox("Checking Account Status", list(CHECKING_ACCOUNT_STATUS_MAP.values()), format_func=lambda x: list(CHECKING_ACCOUNT_STATUS_MAP.keys())[list(CHECKING_ACCOUNT_STATUS_MAP.values()).index(x)])
-    input_data['Duration_Months'] = st.number_input("Duration of Credit (Months)", min_value=4, max_value=72, value=12, step=1)
-    input_data['Credit_History'] = st.selectbox("Credit History", list(CREDIT_HISTORY_MAP.values()), format_func=lambda x: list(CREDIT_HISTORY_MAP.keys())[list(CREDIT_HISTORY_MAP.values()).index(x)])
-    input_data['Purpose'] = st.selectbox("Purpose of Credit", list(PURPOSE_MAP.values()), format_func=lambda x: list(PURPOSE_MAP.keys())[list(PURPOSE_MAP.values()).index(x)])
-    input_data['Credit_Amount'] = st.number_input("Credit Amount (Rs.)", min_value=1000, max_value=100000, value=10000, step=100)
-    input_data['Savings_Account_Bonds'] = st.selectbox("Savings Account/Bonds", list(SAVINGS_ACCOUNT_BONDS_MAP.values()), format_func=lambda x: list(SAVINGS_ACCOUNT_BONDS_MAP.keys())[list(SAVINGS_ACCOUNT_BONDS_MAP.values()).index(x)])
-    input_data['Installment_Rate_Income'] = st.slider("Installment Rate in % of Disposable Income", min_value=0, max_value=15, value=5)
-    input_data['Other_Installment_Plans'] = st.selectbox("Other Installment Plans", list(OTHER_INSTALLMENT_PLANS_MAP.values()), format_func=lambda x: list(OTHER_INSTALLMENT_PLANS_MAP.keys())[list(OTHER_INSTALLMENT_PLANS_MAP.values()).index(x)])
-    input_data['Number_Existing_Credits'] = st.slider("Number of Existing Credits at this Bank", min_value=0, max_value=5, value=1)
-
-    st.subheader("Personal & Demographic Information")
-    input_data['Personal_Status_Gender'] = st.selectbox("Personal Status & Gender", list(PERSONAL_STATUS_GENDER_MAP.values()), format_func=lambda x: list(PERSONAL_STATUS_GENDER_MAP.keys())[list(PERSONAL_STATUS_GENDER_MAP.values()).index(x)])
-    input_data['Employment_Duration'] = st.selectbox("Employment Duration", list(EMPLOYMENT_DURATION_MAP.values()), format_func=lambda x: list(EMPLOYMENT_DURATION_MAP.keys())[list(EMPLOYMENT_DURATION_MAP.values()).index(x)])
-    input_data['Residence_Duration'] = st.slider("Residence Duration (Years at current address)", min_value=1, max_value=4, value=2)
-    input_data['Property'] = st.selectbox("Property Type", list(PROPERTY_MAP.values()), format_func=lambda x: list(PROPERTY_MAP.keys())[list(PROPERTY_MAP.values()).index(x)])
-    input_data['Age'] = st.number_input("Age (Years)", min_value=18, max_value=75, value=21, step=1)
-    input_data['Housing'] = st.selectbox("Housing Type", list(HOUSING_MAP.values()), format_func=lambda x: list(HOUSING_MAP.keys())[list(HOUSING_MAP.values()).index(x)])
-    input_data['Job'] = st.selectbox("Job Type", list(JOB_MAP.values()), format_func=lambda x: list(JOB_MAP.keys())[list(JOB_MAP.values()).index(x)])
-    input_data['Number_People_Maintenance'] = st.radio("Number of people being liable to provide maintenance for", [1, 2], index=0)
-    input_data['Telephone'] = st.radio("Has Telephone (registered in customer's name)?", list(TELEPHONE_MAP.values()), index=0, format_func=lambda x: list(TELEPHONE_MAP.keys())[list(TELEPHONE_MAP.values()).index(x)])
-    input_data['Foreign_Worker'] = st.radio("Is Foreign Worker?", list(FOREIGN_WORKER_MAP.values()), index=0, format_func=lambda x: list(FOREIGN_WORKER_MAP.keys())[list(FOREIGN_WORKER_MAP.values()).index(x)])
-    input_data['Other_Debtors_Guarantors'] = st.selectbox("Other Debtors / Guarantors", list(OTHER_DEBTORS_GUARANTORS_MAP.values()), format_func=lambda x: list(OTHER_DEBTORS_GUARANTORS_MAP.keys())[list(OTHER_DEBTORS_GUARANTORS_MAP.values()).index(x)])
-
+    input_data = {
+        'Bank_Balance_Status': st.selectbox("Bank Balance Status", ['< 0 DM', '0 <= ... < 200 DM', '>= 200 DM / salary assignments for at least 1 year', 'no checking account']),
+        'Loan_Tenure_Months': st.slider("Loan Tenure (in Months)", 4, 72, 12),
+        'Credit_Background': st.selectbox("Credit History", ['no credits taken/all credits paid back duly', 'all credits at this bank paid back duly', 'existing credits paid back duly till now', 'delay in paying off in the past', 'critical account/other credits existing (not at this bank)']),
+        'Loan_Purpose': st.selectbox("Purpose of Loan", ['car (new)', 'car (used)', 'furniture/equipment', 'radio/television', 'education', 'repairs', 'business', 'others']),
+        'Loan_Amount': st.number_input("Loan Amount (in Rs.)", 1000, 100000, 5000),
+        'Savings_Status': st.selectbox("Savings Account Status", ['< 100 DM', '100 <= ... < 500 DM', '500 <= ... < 1000 DM', '>= 1000 DM', 'unknown/no savings account']),
+        'EMI_to_Income_Percent': st.slider("EMI as % of Income", 1, 15, 4),
+        'Other_EMI_Sources': st.selectbox("Other EMI Commitments", ['bank', 'stores', 'none']),
+        'Previous_Loans_At_Bank': st.slider("Number of Previous Loans at this Bank", 0, 4, 1),
+        'Marital_Status_and_Gender': st.selectbox("Marital Status & Gender", ['male : single', 'male : married/widowed', 'female : divorced/separated/married']),
+        'Employment_Years': st.selectbox("Years of Employment", ['< 1 year', '1 <= ... < 4 years', '4 <= ... < 7 years', '>= 7 years', 'unemployed']),
+        'Years_in_Current_Home': st.slider("Years at Current Residence", 1, 4, 2),
+        'Owned_Property_Type': st.selectbox("Type of Owned Property", ['real estate', 'building society savings agreement/life insurance', 'car or other, not in attribute 20', 'unknown / no property']),
+        'Applicant_Age': st.slider("Age of Applicant", 18, 75, 30),
+        'Living_Situation': st.selectbox("Living Status", ['own', 'rent']),
+        'Job_Profile': st.selectbox("Job Profile", ['skilled employee / official', 'unskilled - resident', 'unemployed/unskilled - non-resident', 'management/self-employed/highly qualified employee/officer']),
+        'Dependents': st.radio("Number of Dependents", [1, 2]),
+        'Has_Telephone': st.radio("Telephone Available?", ['none', "yes, registered under the customer’s name"]),
+        'Is_Foreign_National': st.radio("Is the applicant a foreign national?", ['yes', 'no']),
+        'Guarantor_Type': st.selectbox("Guarantor Type", ['none', 'co-applicant', 'guarantor'])
+    }
     submitted = st.form_submit_button("Assess Creditworthiness")
 
 if submitted:
