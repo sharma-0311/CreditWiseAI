@@ -1,0 +1,39 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.env/
+
+# Streamlit & temporary files
+*.db
+*.log
+*.tmp
+*.csv
+*.pdf
+*.png
+*.jpg
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# MySQL dump or sensitive backups
+*.sql~
+*.bak
+*.old
+
+# Env files / Secrets (if you use dotenv)
+.env
+.env.*
+
+# Streamlit config cache
+.streamlit/config.toml
