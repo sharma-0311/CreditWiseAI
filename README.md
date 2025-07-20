@@ -2,7 +2,7 @@
 
 ##  Project Overview
 
-**CreditWiseAI** is a robust, ML-powered Streamlit web application Project that predicts the **creditworthiness** of individuals using advanced ensemble modeling techniques and real-world financial data. This solution integrates preprocessing, model tuning, cost-sensitive evaluation, and SHAP interpretability into an intuitive user interface for quick and reliable assessments.
+**CreditWiseAI** is a full-fledged, end-to-end credit risk prediction platform built with **Streamlit**, **scikit-learn**, and **MySQL**, designed for real-world use by financial institutions. This AI-powered app predicts whether a customer is creditworthy based on financial and behavioral attributes, with advanced ML techniques, database logging, and SHAP explainability.
 
 
 > Built as part of an internship task to demonstrate end-to-end machine learning pipeline and model explainability.
@@ -11,12 +11,14 @@
 
 ##  Key Features
 
+-  **Real-time Streamlit** web interface 
 -  **Random Forest Classification** and **XGBoost** for improved prediction performance
+-  Fully integrated **MySQL** backend for input logging & audit trail 
 -  **Data Preprocessing** and feature engineering
 -  **Visualizations** to understand feature impact and distributions
 -  **Model Evaluation** using classification metrics & ROC AUC
 -  **SHAP Explainability** to understand model decisions
--  **Streamlit**-based web interface for real-time predictions
+-  No sensitive info used — synthetic/academic dataset  
 
 ---
 
@@ -49,6 +51,7 @@ The dataset consists of several financial features such as:
 | **Imbalance**    | Balanced Dataset                   |
 | **Scikit-learn** | ML algorithms and evaluation       |
 | **SHAP**         | Model interpretability             |
+| **MySQL + Connector** | Backend database integration  |
 
 
 ---
@@ -65,6 +68,22 @@ The dataset consists of several financial features such as:
 
 ---
 
+## 🔗 Project Architecture
+
+```text
+[User Input] 
+    ↓
+[Streamlit UI]
+    ↓
+[Data Preprocessing → Model Prediction]
+    ↓                         ↓
+[MySQL Logging]        [SHAP Explanation + PDF Report]
+    ↓                         ↓
+[Download Report]        [Optional RAG Chatbot Integration]
+
+```
+---
+
 ##  Model Performance
 
 - **Accuracy**: *0.7350*
@@ -79,6 +98,21 @@ The dataset consists of several financial features such as:
                | 118  | 22  |   1
 
 - **Top Features**: Duration_Months , Credit_Amount
+
+---
+
+MySQL Integration
+
+The project logs:
+- Applicant details (optional name, age, loan info)
+- Prediction results and confidence scores
+
+SQL tables:
+```
+-- applicant_inputs
+-- prediction_logs
+```
+View the schema in `schema.sql`
 
 ---
 
@@ -105,6 +139,8 @@ The dataset consists of several financial features such as:
 -  Containizer with **Docker**
 -  Implement Model Tracking and Monitoring 
 -  Add unit tests and ML pipeline CI/CD
+-  LangChain + RAG integration for credit policy Q&A
+-  Deploy on Streamlit Cloud or Render
 
 ---
 
@@ -127,4 +163,7 @@ If you found this project helpful or interesting, don’t forget to:
 
 ---
 
-> *This project was built as part of a data science internship assignment focused on ensemble methods for credit prediction.*
+## Acknowledgments
+
+Built during a **Data Science Internship** @ Celebal Technologies
+Special thanks to mentors, peers, and the Celebal community
