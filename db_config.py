@@ -3,8 +3,8 @@ import mysql.connector
 def connect_db():
     conn = mysql.connector.connect(
         host="localhost",           
-        user="credit_user",     
-        password="credit_pass",
+        user="******",            # schema user name /ex: root etc. 
+        password="******",        # schema password
         database="CreditWiseAI"    
     )       
     return conn
