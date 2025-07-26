@@ -73,7 +73,7 @@ The dataset consists of several financial features such as:
 
 ---
 
-## 🔗 Project Architecture
+##  Project Architecture
 
 ```text
 [User Input] 
@@ -173,7 +173,7 @@ I'm **Raghav Gaur**, an aspiring **Data Analyst/Machine Learning Engineer** with
 
 -- Connect with me:  
 [LinkedIn](https://linkedin.com/in/raghav--gaur)  
-Email : rgour6350@gmail.com
+[Email](rgour6350@gmail.com)
 
 ---
 
