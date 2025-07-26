@@ -2,7 +2,7 @@
 
 ##  Project Overview
 
-**CreditWiseAI** is a full-fledged, end-to-end credit risk prediction platform built with **Streamlit**, **scikit-learn**, and **MySQL**, designed for real-world use by financial institutions. This AI-powered app predicts whether a customer is creditworthy based on financial and behavioral attributes, with advanced ML techniques, database logging, and SHAP explainability.
+**CreditWiseAI** is a full-fledged, end-to-end credit risk prediction platform built with **Streamlit**, **scikit-learn**, and **MySQL**, designed for real-world use by financial institutions. This AI-powered app predicts whether a customer is creditworthy based on financial and behavioral attributes, with advanced ML techniques, database logging, SHAP explainability and Gen AI chatbot capabilities.
 
 
 > Built as part of an internship task to demonstrate end-to-end machine learning pipeline and model explainability.
@@ -13,18 +13,21 @@
 
 -  **Real-time Streamlit** web interface 
 -  **Random Forest Classification** and **XGBoost** for improved prediction performance
--  Fully integrated **MySQL** backend for input logging & audit trail 
 -  **Data Preprocessing** and feature engineering
 -  **Visualizations** to understand feature impact and distributions
 -  **Model Evaluation** using classification metrics & ROC AUC
 -  **SHAP Explainability** to understand model decisions
--  No sensitive info used — synthetic/academic dataset  
+-  **Data Logging**: Input and predictions logged in MySQL
+-  **AI Chatbot**: LangChain-powered Q&A chatbot (GPT-3.5 / Gemini)
+-  **Modular Codebase**: Clean separation of UI, ML, database, and RAG pipeline
+-  **Fast & Lightweight**: Optimized for performance and responsiveness
+-  No sensitive info used — synthetic/academic dataset
 
 ---
 
 ##  Problem Statement
 
-> **Goal**: Predict whether a customer is **creditworthy** based on their financial and behavioral attributes using a machine learning classification approach.
+> **Goal**: Predict whether a customer is **creditworthy** based on their financial and behavioral attributes using a machine learning approach.
 
 ---
 
@@ -47,11 +50,13 @@ The dataset consists of several financial features such as:
 |------------------|------------------------------------|
 | **Python**       | Programming language               |
 | **Pandas, NumPy**| Data cleaning & transformation     |
-| **Matplotlib, Seaborn** | Visualization libraries      |
-| **Imbalance**    | Balanced Dataset                   |
+| **Matplotlib, Seaborn** | Visualization libraries     |
+| **Imbalearn**    | Balanced Dataset                   |
 | **Scikit-learn** | ML algorithms and evaluation       |
 | **SHAP**         | Model interpretability             |
 | **MySQL + Connector** | Backend database integration  |
+| **LangChain + FAISS** | RAG Vector DB for Chatbot     |
+| **OpenAI / Gemini API** | LLM-based Credit Q&A Assistant|
 
 
 ---
@@ -79,7 +84,7 @@ The dataset consists of several financial features such as:
     ↓                         ↓
 [MySQL Logging]        [SHAP Explanation + PDF Report]
     ↓                         ↓
-[Download Report]        [Optional RAG Chatbot Integration]
+[Download Report]        [RAG Chatbot Integration]
 
 ```
 ---
@@ -127,7 +132,24 @@ View the schema in `schema.sql`
     ```bash
     jupyter notebook CreditWiseAI.ipynb
     ```
-3. Run Streamlit App:
+3. Install dependencies
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Setup your .env
+   ```bash
+   touch .env
+   ```
+5. Add your keys inside
+   ```bash
+   OPENAI_API_KEY=your_openai_key
+   GOOGLE_API_KEY=your_google_key
+   ```
+6. Run Vector DB Loader
+   ``````bash
+   python run_loader.py
+   ```
+7. Run Streamlit App:
    ```bash
     streamlit run CreditWiseAI_app.py
     ```
@@ -141,6 +163,7 @@ View the schema in `schema.sql`
 -  Add unit tests and ML pipeline CI/CD
 -  LangChain + RAG integration for credit policy Q&A
 -  Deploy on Streamlit Cloud or Render
+-  LangChain Agent Tools for advanced reasoning
 
 ---
 
@@ -150,6 +173,7 @@ I'm **Raghav Gaur**, an aspiring **Data Analyst/Machine Learning Engineer** with
 
 -- Connect with me:  
 [LinkedIn](https://linkedin.com/in/raghav--gaur)  
+[Email](rgour6350@gmail.com)  
 
 ---
 
