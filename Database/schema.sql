@@ -1,4 +1,9 @@
-CREATE TABLE applicant_inputs (
+-- Create the database (optional)
+-- CREATE DATABASE IF NOT EXISTS CreditWiseAI;
+-- USE CreditWiseAI;
+
+-- Table: applicant_inputs
+CREATE TABLE IF NOT EXISTS applicant_inputs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) DEFAULT 'Anonymous',
     age INT,
@@ -11,7 +16,8 @@ CREATE TABLE applicant_inputs (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE prediction_logs (
+-- Table: prediction_logs
+CREATE TABLE IF NOT EXISTS prediction_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     applicant_id INT,
     is_creditworthy BOOLEAN,
