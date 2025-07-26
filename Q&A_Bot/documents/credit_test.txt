@@ -1,0 +1,13 @@
+# Example File
+e.g. ---
+
+Credit risk scoring helps evaluate whether a person is likely to repay a loan. Machine Learning models like Random Forest and SHAP improve model performance and interpretability. This method is crucial in reducing the chances of default and ensuring better financial decision-making.
+
+What is a credit score?
+A credit score is a numerical representation of a person's creditworthiness.
+
+How to improve credit score?
+Timely bill payments, lower credit utilization, and avoiding multiple loan inquiries help improve it.
+
+Why might a loan be denied?
+Low income, bad credit score, too many existing loans, or insufficient credit history are common reasons.
