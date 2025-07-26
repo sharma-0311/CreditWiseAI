@@ -19,6 +19,7 @@ venv/
 # OS files
 .DS_Store
 Thumbs.db
+python-dotenv
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
@@ -31,7 +32,7 @@ Thumbs.db
 *.bak
 *.old
 
-# Env files / Secrets (if you use dotenv)
+# Env files / Secrets (beacuse dotenv)
 .env
 .env.*
 
