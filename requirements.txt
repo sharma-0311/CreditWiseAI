@@ -1,0 +1,20 @@
+streamlit
+mysql-connector-python
+numpy
+matplotlib
+seaborn
+pandas
+scikit-learn
+imblearn
+langchain
+pydantic==1.10.13 # Specific version for compatibility with LangChain versions
+faiss-cpu # Or faiss-gpu if you have a compatible GPU and CUDA setup
+transformers
+sentence-transformers
+
+# For LangChain integration with specific LLMs and components:
+langchain-community
+langchain-openai
+langchain-google-genai
+langchain-huggingface
+python-dotenv
