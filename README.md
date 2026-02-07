@@ -2,17 +2,25 @@
 
 ##  Project Overview
 
-**CreditWiseAI** is a full-fledged, end-to-end credit risk prediction platform built with **Streamlit**, **scikit-learn**, and **MySQL**, designed for real-world use by financial institutions. This AI-powered app predicts whether a customer is creditworthy based on financial and behavioral attributes, with advanced ML techniques, database logging, SHAP explainability and Gen AI chatbot capabilities.
+**CreditWiseAI** is a production-grade, end-to-end credit risk **assessment platform** built using **Streamlit, scikit-learn, TensorFlow (LSTM)**, and **Firebase**.
 
+The system predicts whether an applicant is creditworthy or high-risk by combining:
 
-> Built as part of an internship task to demonstrate end-to-end machine learning pipeline and model explainability.
+- Traditional machine learning (Random Forest / XGBoost)
+- Deep learning (LSTM) for behavioral pattern extraction
+- Explainable AI (SHAP) for transparency
+- RAG-powered GenAI chatbot for credit knowledge assistance
+
+> Built as an internship / PPO-level project to demonstrate real-world ML system design, explainability, and deployment readiness.
 
 ---
 
 ##  Key Features
 
 -  **Real-time Streamlit** web interface 
--  **Random Forest Classification** and **XGBoost** for improved prediction performance
+-  **Hybrid Model Architecture**
+-- **LSTM** for temporal/behavioral feature learning
+-- **Random Forest / XGBoost** for final decision making
 -  **Data Preprocessing** and feature engineering
 -  **Visualizations** to understand feature impact and distributions
 -  **Model Evaluation** using classification metrics & ROC AUC
