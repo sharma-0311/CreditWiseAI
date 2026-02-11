@@ -1,5 +1,10 @@
 # CreditWiseAI - Intelligent Creditworthiness Prediction App
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/sharma-0311/CreditWiseAI)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-1.12%2B-orange)](https://pytorch.org/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 ##  Project Overview
 
 **CreditWiseAI** is a production-grade, end-to-end credit risk **assessment platform** built using **Streamlit, scikit-learn, TensorFlow (LSTM)**, and **Firebase**.
