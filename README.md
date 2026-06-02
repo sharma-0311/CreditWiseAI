@@ -125,13 +125,6 @@ The project logs:
 - Applicant details (optional name, age, loan info)
 - Prediction results and confidence scores
 
-SQL tables:
-```
--- applicant_inputs
--- prediction_logs
-```
-View the schema in `schema.sql`
-
 ---
 
 ##  How to Run This Project
@@ -153,16 +146,12 @@ View the schema in `schema.sql`
    ```bash
    touch .env
    ```
-5. Add your keys inside
-   ```bash
-   OPENAI_API_KEY=your_openai_key
-   GOOGLE_API_KEY=your_google_key
-   ```
-6. Run Vector DB Loader
+
+5. Run Vector DB Loader
    ```bash
    python run_loader.py
    ```
-7. Run Streamlit App:
+6. Run Streamlit App:
    ```bash
     streamlit run CreditWiseAI_app.py
     ```
