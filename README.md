@@ -16,7 +16,7 @@ The system predicts whether an applicant is creditworthy or high-risk by combini
 - Explainable AI (SHAP) for transparency
 - RAG-powered GenAI chatbot for credit knowledge assistance
 
-> Built as an internship / PPO-level project to demonstrate real-world ML system design, explainability, and deployment readiness.
+> Built as an Data Science Project to demonstrate real-world ML system design, explainability, and deployment readiness.
 
 ---
 
